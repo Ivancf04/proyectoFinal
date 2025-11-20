@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Aprende Jugando - Flora del Estado</title>
   <link rel="stylesheet" href="styles.css" />
-</head>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
 <script>
   const firebaseConfig = {
@@ -24,10 +24,14 @@
   firebase.initializeApp(firebaseConfig);
   const db = firebase.database();
 </script>
+</head>
+
+
+
 
 <div class="ayuda-flotante">
-  <button id="ayudaFija" onclick="mostrarPopupAyuda()">¿Necesitas ayuda?</button>
-  <div class="popup-ayuda" id="popupAyuda">
+  <button id="ayudaFija" type="button">¿Necesitas ayuda?</button>
+  <div class="popup-ayuda" id="popupAyuda" type="button">
     <button class="cerrar-ayuda" onclick="cerrarPopupAyuda()">&times;</button>
     <h2>🆘 ¿Necesitas ayuda?</h2>
       <p>Esta aplicación te enseña sobre las plantas de Baja California Sur.</p>
@@ -173,7 +177,16 @@
     <button onclick="volverAlMenu()">⬅️ Volver al menú</button>
   </div>
 
-  <script src="script.js"></script>
+  <!-- Archivos de main cada juego -->
+  <script src="js/main.js"></script>
+
+  <!-- Archivos de cada juego -->
+  <script src="js/memorama.js"></script>
+  <script src="js/une-fotos.js"></script>
+  <script src="js/adivina-planta.js"></script>
+  <script src="js/trivia.js"></script>
+  <script src="js/clasifica-toxicidad.js"></script>
+  <script src="js/verdadero-falso.js"></script>
   
 </body>
 </html>
