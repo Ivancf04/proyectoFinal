@@ -131,6 +131,14 @@ function sumarPuntos(cantidad) {
   usuario.puntos += cantidad;
   document.getElementById("puntos").textContent = usuario.puntos;
   actualizarUsuarioEnFirebase();
+
+  const deltaSpan = document.getElementById("puntosDelta");
+  deltaSpan.textContent = `+${cantidad}`;
+  deltaSpan.classList.add("visible");
+
+  setTimeout(() => {
+    deltaSpan.classList.remove("visible");
+  }, 600);
 }
 
 // ---- NIVELES POR JUEGO (UTILIDADES COMPARTIDAS) ----

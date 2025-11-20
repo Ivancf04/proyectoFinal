@@ -81,6 +81,10 @@
         </div>
       </div>
 
+        <p>
+          🏆 Puntos: <span id="puntos">0</span>
+          <span id="puntosDelta" class="puntos-delta"></span>
+        </p>
       <!-- Menú principal -->
       <div id="menu" class="hidden">
         <p>👋 Bienvenido, <span id="nombreUsuario"></span></p>
@@ -96,9 +100,6 @@
         <button onclick="iniciarJuego('clasificaToxicidad')">🚥 Clasifica por toxicidad</button>
         <button onclick="iniciarJuego('verdaderoFalso')">✅❌ Verdadero o Falso</button>
 
-      
-
-        <p>🏆 Puntos: <span id="puntos">0</span></p>
         <p style="display: flex; gap: 10px; align-items: center;">
         <button id="btnSonido" onclick="toggleSonido()">🔊 Sonidos: Activados</button>
         <span class="usuarios-popup-contenedor">

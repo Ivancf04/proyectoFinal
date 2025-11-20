@@ -582,6 +582,17 @@ button:active {
 
 }
 
+.puntos-delta {
+  margin-left: 8px;
+  opacity: 0;
+  transition: opacity 0.4s, transform 0.4s;
+  transform: translateY(0);
+}
+
+.puntos-delta.visible {
+  opacity: 1;
+  transform: translateY(-8px);
+}
 
 
 
