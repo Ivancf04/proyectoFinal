@@ -126,6 +126,13 @@ function actualizarUsuarioEnFirebase() {
   });
 }
 
+// Sumar puntos al usuario
+function sumarPuntos(cantidad) {
+  usuario.puntos += cantidad;
+  document.getElementById("puntos").textContent = usuario.puntos;
+  actualizarUsuarioEnFirebase();
+}
+
 // ---- NIVELES POR JUEGO (UTILIDADES COMPARTIDAS) ----
 function obtenerNivelJuego(nombreJuego) {
   return nivelesJuegos[nombreJuego] || 1;

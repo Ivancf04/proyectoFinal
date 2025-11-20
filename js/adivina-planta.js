@@ -55,18 +55,14 @@ function iniciarAdivinaPlanta() {
             if (nivelActual < 3) {
               subirNivelJuego(nombreJuego);
               if (!yaCompletoTodos) {
-                usuario.puntos += 5;
-                document.getElementById("puntos").textContent = usuario.puntos;
-                actualizarUsuarioEnFirebase();
+                sumarPuntos(5);
               }
               iniciarAdivinaPlanta();
             } else {
               nivelesJuegos[nombreJuego + "_completado"] = true;
               actualizarNivelJuego(nombreJuego, 1);
               if (!yaCompletoTodos) {
-                usuario.puntos += 5;
-                document.getElementById("puntos").textContent = usuario.puntos;
-                actualizarUsuarioEnFirebase();
+                sumarPuntos(5);
               }
               mostrarFelicitacion();
               iniciarAdivinaPlanta();

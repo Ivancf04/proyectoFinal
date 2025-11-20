@@ -66,9 +66,7 @@ function iniciarClasificaToxicidad() {
       if (esCorrecto) {
         reproducirSonido("win");
         if (!yaCompletoTodos) {
-          usuario.puntos += 1;
-          document.getElementById("puntos").textContent = usuario.puntos;
-          actualizarUsuarioEnFirebase();
+          sumarPuntos(1);
         }
         correctas++;
       } else {

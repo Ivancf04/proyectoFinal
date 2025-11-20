@@ -54,18 +54,14 @@ function iniciarVerdaderoFalso() {
       if (nivelActual < 3) {
         subirNivelJuego(nombreJuego);
         if (!yaCompletoTodos) {
-          usuario.puntos += aciertos;
-          document.getElementById("puntos").textContent = usuario.puntos;
-          actualizarUsuarioEnFirebase();
+          sumarPuntos(aciertos);
         }
         iniciarVerdaderoFalso();
       } else {
         nivelesJuegos[nombreJuego + "_completado"] = true;
         actualizarNivelJuego(nombreJuego, 1);
         if (!yaCompletoTodos) {
-          usuario.puntos += aciertos;
-          document.getElementById("puntos").textContent = usuario.puntos;
-          actualizarUsuarioEnFirebase();
+          sumarPuntos(aciertos);
         }
         mostrarFelicitacion();
         iniciarVerdaderoFalso();

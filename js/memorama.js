@@ -78,9 +78,7 @@ function crearMemorama() {
               if (nivelActual < 3) {
                 subirNivelJuego(nombreJuego);
                 if (!yaCompletoNiveles) {
-                  usuario.puntos += 10;
-                  document.getElementById("puntos").textContent = usuario.puntos;
-                  actualizarUsuarioEnFirebase();
+                  sumarPuntos(10);
                 }
                 iniciarMemorama();
               } else {
