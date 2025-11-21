@@ -121,10 +121,13 @@
         </div>
       </div>
 
-        <p>
-          🏆 Puntos: <span id="puntos">0</span>
-          <span id="puntosDelta" class="puntos-delta"></span>
-        </p>
+        <div id="puntos-menu">
+          <p>
+            🏆 Puntos: <span id="puntos">0</span>
+            <span id="puntosDelta" class="puntos-delta"></span>
+          </p>
+          <button onclick="volverAlMenu()">⬅️ Volver al menú</button>
+          </div>
       <!-- Menú principal -->
       <div id="menu" class="hidden">
         <p>👋 Bienvenido, <span id="nombreUsuario"></span></p>
@@ -214,9 +217,6 @@
 
     <!-- Galería de flores -->
     <div class="galeria-flores" id="galeriaFlores"></div>
-
-    <!-- Botón para regresar al menú -->
-    <button onclick="volverAlMenu()">⬅️ Volver al menú</button>
   </div>
 
   <!-- Archivos de main cada juego -->
