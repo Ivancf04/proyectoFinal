@@ -65,6 +65,9 @@ function iniciarClasificaToxicidad() {
 
       if (esCorrecto) {
         reproducirSonido("win");
+        mostrarPopupExito({
+          mensaje: "¡Es correcto!"
+        });
         if (!yaCompletoTodos) {
           sumarPuntos(1);
         }
@@ -72,6 +75,10 @@ function iniciarClasificaToxicidad() {
       } else {
         reproducirSonido("lose");
         planta.clasificacionIncorrecta = tipo;
+        mostrarErrorJuego({
+          flor: planta,
+          mensajeExtra: "Oops"
+        });
         errores.push(planta);
       }
 
@@ -90,6 +97,7 @@ function iniciarClasificaToxicidad() {
             ).join('\n');
           }
 
+
           alert(mensaje);
 
           const porcentajeAciertos = (correctas / total) * 100;
@@ -97,12 +105,17 @@ function iniciarClasificaToxicidad() {
           if (porcentajeAciertos >= 70) {
             if (nivelActual < 3) {
               subirNivelJuego(nombreJuego);
-              alert(`🎉 ¡Nivel completado! Avanzas al nivel ${nivelActual + 1}`);
+              mostrarPopupExito({
+                mensaje: `🎉 ¡Nivel completado! Avanzas al nivel ${nivelActual + 1}`
+              });
               iniciarClasificaToxicidad();
             } else {
               nivelesJuegos[nombreJuego + "_completado"] = true;
               actualizarNivelJuego(nombreJuego, 1);
               alert("🏆 ¡Has completado todos los niveles! El juego se reinicia.");
+              mostrarPopupExito({
+                mensaje: "🏆 ¡Has completado todos los niveles! El juego se reinicia."
+              });
               mostrarFelicitacion();
               iniciarClasificaToxicidad();
             }

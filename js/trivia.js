@@ -1,3 +1,5 @@
+const planta = flores[Math.floor(Math.random() * flores.length)];
+
 function iniciarTrivia() {
   const instrucciones = document.getElementById("instruccionesJuego");
   instrucciones.innerHTML = `
@@ -23,7 +25,6 @@ function iniciarTrivia() {
   const preguntas = [];
 
   while (preguntas.length < cantidad) {
-    const planta = flores[Math.floor(Math.random() * flores.length)];
     const campo = camposTrivia[Math.floor(Math.random() * camposTrivia.length)];
 
     const preguntaTexto = {
@@ -52,8 +53,9 @@ function iniciarTrivia() {
     cont.innerHTML = "";
 
     if (index >= preguntas.length) {
-      alert("🎉 ¡Nivel completado!");
-      
+      mostrarPopupExito({
+            mensaje: "🎉 ¡Nivel completado!"
+          });
       if (nivelActual < 3) {
         subirNivelJuego(nombreJuego);
         if (!yaCompletoTodos) {
@@ -86,10 +88,15 @@ function iniciarTrivia() {
         if (opcion === pregunta.respuestaCorrecta) {
           aciertos++;
           reproducirSonido("win");
-          alert("✅ ¡Correcto!");
+          mostrarPopupExito({
+            mensaje: "¡Respuesta correcta!"
+          });
         } else {
           reproducirSonido("lose");
-          alert("❌ Incorrecto. Era: " + pregunta.respuestaCorrecta);
+          mostrarErrorJuego({
+            flor: planta,
+            mensajeExtra: "Te has equivocado, pero no te preocupes !Aun puedes lograrlo!"
+          });
         }
         mostrarPregunta(index + 1);
       };

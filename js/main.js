@@ -10,23 +10,23 @@ let intentosRestantes = null;
 let aciertos = 0;
 
 const flores = [
-  { nombre: "Cardón", municipio: "Mulegé, Loreto", cientifico: "Pachycereus pringlei", toxica: false, usos: "Sombra, frutos comestibles y reserva de agua para fauna.", faunaAsociada: "Murciélagos, aves e insectos.", ecosistema: "Desierto costero del Golfo de California.", conservacion: "Sin riesgo.", curiosidad: "Puede superar los 10 metros y vivir más de 200 años." }, 
-  { nombre: "Choya", municipio: "Mulegé, Loreto", cientifico: "Cylindropuntia spp", toxica: true, usos: "Ornamental, barreras vivas.", faunaAsociada: "Aves pequeñas que anidan entre sus espinas.", ecosistema: "Matorral xerófilo.", conservacion: "Sin riesgo.", curiosidad: "Sus espinas tienen púas microscópicas que se adhieren fácilmente." }, 
-  { nombre: "Mezquite", municipio: "Mulegé", cientifico: "Prosopis glandulosa", toxica: false, usos: "Madera, carbón, forraje y alimento (vainas).", faunaAsociada: "Aves, insectos, ganado.", ecosistema: "Matorral desértico.", conservacion: "Común.", curiosidad: "Sus semillas se usaban para hacer harina en tiempos prehispánicos." }, 
-  { nombre: "Torote", municipio: "Mulegé", cientifico: "Bursera microphylla", toxica: true, usos: "Madera para leña y resina con fines medicinales.", faunaAsociada: "Aves e insectos.", ecosistema: "Matorral y laderas secas.", conservacion: "Abundante.", curiosidad: "Su tronco retorcido y color rojizo lo hace fácilmente reconocible." }, 
-  { nombre: "Palo verde", municipio: "Mulegé", cientifico: "Parkinsonia florida", toxica: false, usos: "Ornamental, sombra, reforestación.", faunaAsociada: "Colibríes e insectos polinizadores.", ecosistema: "Desierto y arroyos secos.", conservacion: "Sin riesgo.", curiosidad: "Su tronco verde realiza fotosíntesis incluso sin hojas." }, 
-  { nombre: "Pitaya agria", municipio: "Comondú", cientifico: "Stenocereus gummosus", toxica: false, usos: "Fruto comestible en nieves, jugos y dulces.", faunaAsociada: "Murciélagos, aves e insectos.", ecosistema: "Matorral desértico.", conservacion: "Sin riesgo.", curiosidad: "El fruto tiene sabor ácido muy apreciado por comunidades locales." }, 
-  { nombre: "Pitaya dulce", municipio: "Comondú", cientifico: "Stenocereus thurberi", toxica: false, usos: "Fruto comestible, tradicionalmente recolectado por pueblos originarios.", faunaAsociada: "Murciélagos y abejas.", ecosistema: "Desierto de Sonora y Baja California Sur.", conservacion: "Sin riesgo.", curiosidad: "Florece de noche, atrayendo polinizadores nocturnos." }, 
-  { nombre: "Palo blanco", municipio: "Comondú, Los Cabos", cientifico: "Lysiloma candidum", toxica: false, usos: "Madera para carpintería y medicina tradicional.", faunaAsociada: "Aves e insectos.", ecosistema: "Bosque tropical seco.", conservacion: "Sin riesgo.", curiosidad: "Produce flores blancas en forma de pompones muy vistosas." }, 
-  { nombre: "Torote blanco", municipio: "Comondú", cientifico: "Bursera odorata", toxica: true, usos: "Producción de resina aromática y leña.", faunaAsociada: "Aves e insectos.", ecosistema: "Matorrales secos.", conservacion: "Común.", curiosidad: "La resina ha sido utilizada en rituales como incienso." }, 
-  { nombre: "Chirinola", municipio: "Comondú", cientifico: "Stenocereus eruca", toxica: false, usos: "Ornamental, potencial alimenticio.", faunaAsociada: "Insectos polinizadores.", ecosistema: "Zonas arenosas costeras.", conservacion: "Vulnerable por hábitat reducido.", curiosidad: "Crece horizontalmente y 'camina' por el suelo." }, 
-  { nombre: "Mangle rojo", municipio: "La Paz, Loreto", cientifico: "Rhizophora mangle", toxica: true, usos: "Protección costera, filtro natural de agua.", faunaAsociada: "Camarones, peces, aves costeras.", ecosistema: "Manglar.", conservacion: "Protegido por ley.", curiosidad: "Sus raíces aéreas ayudan a estabilizar el suelo." }, 
-  { nombre: "Mangle blanco", municipio: "La Paz, Loreto", cientifico: "Laguncularia racemosa", toxica: true, usos: "Protección de costas, medicina tradicional.", faunaAsociada: "Cangrejos, aves y peces juveniles.", ecosistema: "Manglares y estuarios.", conservacion: "Protegido por NOM-059.", curiosidad: "Sus hojas eliminan sal mediante glándulas especiales." }, 
-  { nombre: "Mangle negro", municipio: "La Paz", cientifico: "Avicennia germinans", toxica: true, usos: "Protección costera, sombra, hábitat.", faunaAsociada: "Aves zancudas, moluscos.", ecosistema: "Manglar.", conservacion: "Protegido legalmente.", curiosidad: "Sus raíces forman 'neumatóforos' que sobresalen del suelo." }, 
-  { nombre: "Palo fierro", municipio: "La Paz", cientifico: "Olneya tesota", toxica: false, usos: "Artesanías, carbón, carpintería.", faunaAsociada: "Aves, abejas, reptiles.", ecosistema: "Desierto y piedemontes áridos.", conservacion: "Amenazada por sobreexplotación.", curiosidad: "Su madera es tan densa que no flota en el agua." }, 
-  { nombre: "Biznaga de Evermann", municipio: "La Paz", cientifico: "Mammillaria evermanniana", toxica: false, usos: "Ornamental, conservación de biodiversidad.", faunaAsociada: "Insectos polinizadores.", ecosistema: "Zonas rocosas áridas.", conservacion: "Protegida (NOM-059).", curiosidad: "Endémica de BCS, muy apreciada por coleccionistas." }, 
-  { nombre: "Pino piñonero", municipio: "Los Cabos", cientifico: "Pinus cembroides subsp. lagunae", toxica: false, usos: "Madera, piñones comestibles.", faunaAsociada: "Ardillas, aves y mamíferos pequeños.", ecosistema: "Bosque de montaña.", conservacion: "Endémico y amenazado.", curiosidad: "Solo crece en las sierras altas de BCS." }, 
-  { nombre: "Madroño", municipio: "Los Cabos", cientifico: "Arbutus spp", toxica: true, usos: "Ornamental, medicinal en infusiones.", faunaAsociada: "Aves frugívoras e insectos.", ecosistema: "Bosques templados.", conservacion: "Sin riesgo alto.", curiosidad: "Su corteza se desprende en placas delgadas y rojizas." }, 
+  { nombre: "Cardón", municipio: "Mulegé, Loreto", cientifico: "Pachycereus pringlei", toxica: false, usos: "Sombra, frutos comestibles y reserva de agua para fauna.", faunaAsociada: "Murciélagos, aves e insectos.", ecosistema: "Desierto costero del Golfo de California.", conservacion: "Sin riesgo.", curiosidad: "Puede superar los 10 metros y vivir más de 200 años." },
+  { nombre: "Choya", municipio: "Mulegé, Loreto", cientifico: "Cylindropuntia spp", toxica: true, usos: "Ornamental, barreras vivas.", faunaAsociada: "Aves pequeñas que anidan entre sus espinas.", ecosistema: "Matorral xerófilo.", conservacion: "Sin riesgo.", curiosidad: "Sus espinas tienen púas microscópicas que se adhieren fácilmente." },
+  { nombre: "Mezquite", municipio: "Mulegé", cientifico: "Prosopis glandulosa", toxica: false, usos: "Madera, carbón, forraje y alimento (vainas).", faunaAsociada: "Aves, insectos, ganado.", ecosistema: "Matorral desértico.", conservacion: "Común.", curiosidad: "Sus semillas se usaban para hacer harina en tiempos prehispánicos." },
+  { nombre: "Torote", municipio: "Mulegé", cientifico: "Bursera microphylla", toxica: true, usos: "Madera para leña y resina con fines medicinales.", faunaAsociada: "Aves e insectos.", ecosistema: "Matorral y laderas secas.", conservacion: "Abundante.", curiosidad: "Su tronco retorcido y color rojizo lo hace fácilmente reconocible." },
+  { nombre: "Palo verde", municipio: "Mulegé", cientifico: "Parkinsonia florida", toxica: false, usos: "Ornamental, sombra, reforestación.", faunaAsociada: "Colibríes e insectos polinizadores.", ecosistema: "Desierto y arroyos secos.", conservacion: "Sin riesgo.", curiosidad: "Su tronco verde realiza fotosíntesis incluso sin hojas." },
+  { nombre: "Pitaya agria", municipio: "Comondú", cientifico: "Stenocereus gummosus", toxica: false, usos: "Fruto comestible en nieves, jugos y dulces.", faunaAsociada: "Murciélagos, aves e insectos.", ecosistema: "Matorral desértico.", conservacion: "Sin riesgo.", curiosidad: "El fruto tiene sabor ácido muy apreciado por comunidades locales." },
+  { nombre: "Pitaya dulce", municipio: "Comondú", cientifico: "Stenocereus thurberi", toxica: false, usos: "Fruto comestible, tradicionalmente recolectado por pueblos originarios.", faunaAsociada: "Murciélagos y abejas.", ecosistema: "Desierto de Sonora y Baja California Sur.", conservacion: "Sin riesgo.", curiosidad: "Florece de noche, atrayendo polinizadores nocturnos." },
+  { nombre: "Palo blanco", municipio: "Comondú, Los Cabos", cientifico: "Lysiloma candidum", toxica: false, usos: "Madera para carpintería y medicina tradicional.", faunaAsociada: "Aves e insectos.", ecosistema: "Bosque tropical seco.", conservacion: "Sin riesgo.", curiosidad: "Produce flores blancas en forma de pompones muy vistosas." },
+  { nombre: "Torote blanco", municipio: "Comondú", cientifico: "Bursera odorata", toxica: true, usos: "Producción de resina aromática y leña.", faunaAsociada: "Aves e insectos.", ecosistema: "Matorrales secos.", conservacion: "Común.", curiosidad: "La resina ha sido utilizada en rituales como incienso." },
+  { nombre: "Chirinola", municipio: "Comondú", cientifico: "Stenocereus eruca", toxica: false, usos: "Ornamental, potencial alimenticio.", faunaAsociada: "Insectos polinizadores.", ecosistema: "Zonas arenosas costeras.", conservacion: "Vulnerable por hábitat reducido.", curiosidad: "Crece horizontalmente y 'camina' por el suelo." },
+  { nombre: "Mangle rojo", municipio: "La Paz, Loreto", cientifico: "Rhizophora mangle", toxica: true, usos: "Protección costera, filtro natural de agua.", faunaAsociada: "Camarones, peces, aves costeras.", ecosistema: "Manglar.", conservacion: "Protegido por ley.", curiosidad: "Sus raíces aéreas ayudan a estabilizar el suelo." },
+  { nombre: "Mangle blanco", municipio: "La Paz, Loreto", cientifico: "Laguncularia racemosa", toxica: true, usos: "Protección de costas, medicina tradicional.", faunaAsociada: "Cangrejos, aves y peces juveniles.", ecosistema: "Manglares y estuarios.", conservacion: "Protegido por NOM-059.", curiosidad: "Sus hojas eliminan sal mediante glándulas especiales." },
+  { nombre: "Mangle negro", municipio: "La Paz", cientifico: "Avicennia germinans", toxica: true, usos: "Protección costera, sombra, hábitat.", faunaAsociada: "Aves zancudas, moluscos.", ecosistema: "Manglar.", conservacion: "Protegido legalmente.", curiosidad: "Sus raíces forman 'neumatóforos' que sobresalen del suelo." },
+  { nombre: "Palo fierro", municipio: "La Paz", cientifico: "Olneya tesota", toxica: false, usos: "Artesanías, carbón, carpintería.", faunaAsociada: "Aves, abejas, reptiles.", ecosistema: "Desierto y piedemontes áridos.", conservacion: "Amenazada por sobreexplotación.", curiosidad: "Su madera es tan densa que no flota en el agua." },
+  { nombre: "Biznaga de Evermann", municipio: "La Paz", cientifico: "Mammillaria evermanniana", toxica: false, usos: "Ornamental, conservación de biodiversidad.", faunaAsociada: "Insectos polinizadores.", ecosistema: "Zonas rocosas áridas.", conservacion: "Protegida (NOM-059).", curiosidad: "Endémica de BCS, muy apreciada por coleccionistas." },
+  { nombre: "Pino piñonero", municipio: "Los Cabos", cientifico: "Pinus cembroides subsp. lagunae", toxica: false, usos: "Madera, piñones comestibles.", faunaAsociada: "Ardillas, aves y mamíferos pequeños.", ecosistema: "Bosque de montaña.", conservacion: "Endémico y amenazado.", curiosidad: "Solo crece en las sierras altas de BCS." },
+  { nombre: "Madroño", municipio: "Los Cabos", cientifico: "Arbutus spp", toxica: true, usos: "Ornamental, medicinal en infusiones.", faunaAsociada: "Aves frugívoras e insectos.", ecosistema: "Bosques templados.", conservacion: "Sin riesgo alto.", curiosidad: "Su corteza se desprende en placas delgadas y rojizas." },
   { nombre: "Encino", municipio: "Los Cabos", cientifico: "Quercus spp", toxica: true, usos: "Madera, leña, protección del suelo.", faunaAsociada: "Venados, ardillas, aves.", ecosistema: "Bosque de encino.", conservacion: "Vulnerable por cambio climático.", curiosidad: "Sus bellotas alimentan a muchas especies, pero son tóxicas para humanos." }
 ];
 
@@ -379,6 +379,101 @@ function cargarUsuariosPuntuaciones() {
     }
   });
 }
+
+//Funcion para el popup con info de la planta
+function mostrarInfoPlanta(flor) {
+  if (!flor) return;
+
+  document.getElementById("popupPlantaNombre").textContent = flor.nombre;
+  document.getElementById("popupPlantaMunicipio").textContent = flor.municipio;
+  document.getElementById("popupPlantaCientifico").textContent = flor.cientifico;
+  document.getElementById("popupPlantaToxica").textContent = flor.toxica ? "🚫 Tóxica" : "✅ No tóxica";
+  document.getElementById("popupPlantaUsos").textContent = flor.usos;
+  document.getElementById("popupPlantaFauna").textContent = flor.faunaAsociada;
+  document.getElementById("popupPlantaEcosistema").textContent = flor.ecosistema;
+  document.getElementById("popupPlantaConservacion").textContent = flor.conservacion;
+  document.getElementById("popupPlantaCuriosidad").textContent = flor.curiosidad;
+
+  document.getElementById("popupPlanta").classList.add("visible");
+}
+
+// Frases motivacionales
+const FRASES_MOTIVACION = [
+  "¡Vas muy bien, sigue intentando! 💪",
+  "Equivocarse es parte de aprender, inténtalo otra vez. 🌱",
+  "Cada intento te hace más fuerte. 💚",
+  "¡No te rindas, lo estás haciendo genial! ⭐",
+  "¡Buen esfuerzo! Vuelve a intentarlo. 🎯"
+];
+
+let ultimaFlorError = null;
+
+function mostrarErrorJuego(opciones = {}) {
+  const { mensajeExtra = "", flor = null, mostrarBotonInfo = true } = opciones;
+
+  const base = FRASES_MOTIVACION[Math.floor(Math.random() * FRASES_MOTIVACION.length)];
+  const texto = mensajeExtra ? `${base} ${mensajeExtra}` : base;
+
+  document.getElementById("popupErrorMensaje").textContent = texto;
+
+  const btnInfo = document.getElementById("popupErrorInfoBtn");
+  if (flor && mostrarBotonInfo) {
+    ultimaFlorError = flor;
+    btnInfo.classList.remove("hidden");
+  } else {
+    ultimaFlorError = null;
+    btnInfo.classList.add("hidden");
+  }
+
+  document.getElementById("popupError").classList.add("visible");
+}
+
+function cerrarErrorJuego() {
+  document.getElementById("popupError").classList.remove("visible");
+}
+
+// Cuando se haga clic en “Ver información de la planta”
+document.addEventListener("DOMContentLoaded", () => {
+  const btnInfo = document.getElementById("popupErrorInfoBtn");
+  if (btnInfo) {
+    btnInfo.addEventListener("click", () => {
+      if (ultimaFlorError) {
+        cerrarErrorJuego();
+        mostrarInfoPlanta(ultimaFlorError);
+      }
+    });
+  }
+});
+
+function cerrarInfoPlanta() {
+  document.getElementById("popupPlanta").classList.remove("visible");
+}
+
+// Frases motivadoras de éxito
+const FRASES_EXITO = [
+  "¡Excelente trabajo! 🌟",
+  "¡Sigue así, lo estás haciendo increíble! 💚",
+  "¡Genial! Sabes mucho sobre plantas. 🌿",
+  "¡Muy bien! Aprender es divertido contigo. 😄",
+  "¡Qué buena respuesta! Estás mejorando mucho. 📚"
+];
+
+function mostrarPopupExito(opciones = {}) {
+  const { titulo = "🎉 ¡Bien hecho!", mensaje = "" } = opciones;
+
+  const frase = FRASES_EXITO[Math.floor(Math.random() * FRASES_EXITO.length)];
+  const textoFinal = mensaje ? `${frase} ${mensaje}` : frase;
+
+  document.getElementById("popupExitoTitulo").textContent = titulo;
+  document.getElementById("popupExitoMensaje").textContent = textoFinal;
+
+  document.getElementById("popupExito").classList.add("visible");
+}
+
+function cerrarPopupExito() {
+  document.getElementById("popupExito").classList.remove("visible");
+}
+
 
 // -------- EFECTO CONFETI / FELICITACIÓN --------
 function lanzarConfeti() {

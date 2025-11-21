@@ -64,11 +64,16 @@ function iniciarUneFotos() {
 
         aciertos++;
         reproducirSonido("click");
+        mostrarPopupExito({
+          mensaje: "¡Es correcto!"
+        });
 
         if (aciertos === cantidad) {
           setTimeout(() => {
             reproducirSonido("win");
-            alert("🎉 ¡Muy bien! Has completado el nivel.");
+            mostrarPopupExito({
+              mensaje: "🎉 ¡Muy bien! Has completado el nivel."
+            });
             
             if (nivelActual < 3) {
               subirNivelJuego(nombreJuego);
@@ -89,6 +94,12 @@ function iniciarUneFotos() {
         }
       } else {
         reproducirSonido("lose");
+        const florCorrecta = flores.find(f => f.nombre === drop.dataset.nombre);
+
+        mostrarErrorJuego({
+          flor: florCorrecta,
+          mensajeExtra: "Observa bien el nombre y la imagen, ¡tú puedes lograrlo! 👀"
+        });
         drop.classList.add("alerta", "error");
         drop.textContent = "❌ Incorrecto";
         setTimeout(() => {

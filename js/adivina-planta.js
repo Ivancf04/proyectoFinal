@@ -47,10 +47,14 @@ function iniciarAdivinaPlanta() {
         if (opcion.nombre === plantaCorrecta.nombre) {
           aciertos++;
           reproducirSonido("win");
-          alert("✅ ¡Correcto!");
+          mostrarPopupExito({
+            mensaje: "¡Adivinaste la planta!"
+          });
 
           if (aciertos >= cantidad) {
-            alert("🎉 ¡Nivel completado!");
+            mostrarPopupExito({
+            mensaje: "🎉 ¡Nivel completado!"
+          });
             
             if (nivelActual < 3) {
               subirNivelJuego(nombreJuego);
@@ -73,7 +77,11 @@ function iniciarAdivinaPlanta() {
 
         } else {
           reproducirSonido("lose");
-          alert("❌ Incorrecto. Intenta de nuevo.");
+
+          mostrarErrorJuego({
+            flor: plantaCorrecta,
+            mensajeExtra: "Recuerda que puedes ir a la seccion aprender para reforzar tus conocimientos, ¡tú puedes lograrlo! 👀"
+          });
         }
       };
       botonesContainer.appendChild(btn);

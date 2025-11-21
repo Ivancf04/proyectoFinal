@@ -46,6 +46,46 @@
   </div>
 </div>
 
+<!-- Popup de error / motivación -->
+<div class="popup-error" id="popupError">
+  <div class="popup-error-contenido">
+    <button class="cerrar-popup-error" type="button" onclick="cerrarErrorJuego()">&times;</button>
+    <h2>❌ ¡Casi lo logras!</h2>
+    <p id="popupErrorMensaje">
+      No te preocupes, equivocaras es parte de aprender.
+    </p>
+    <button id="popupErrorInfoBtn" type="button" class="btn-ver-info hidden">
+      📚 Ver información de la planta
+    </button>
+  </div>
+</div>
+
+<!-- Popup de éxito -->
+<div class="popup-exito" id="popupExito">
+  <div class="popup-exito-contenido">
+    <button class="cerrar-popup-exito" type="button" onclick="cerrarPopupExito()">&times;</button>
+    <h2 id="popupExitoTitulo">🎉 ¡Bien hecho!</h2>
+    <p id="popupExitoMensaje">Seguiste muy bien las pistas, ¡continúa así!</p>
+    <button type="button" class="btn-continuar" onclick="cerrarPopupExito()">Continuar</button>
+  </div>
+</div>
+
+
+<div class="popup-planta" id="popupPlanta">
+  <div class="popup-planta-contenido">
+    <button class="cerrar-popup-planta" type="button" onclick="cerrarInfoPlanta()">&times;</button>
+    <h2 id="popupPlantaNombre">Nombre de la planta</h2>
+    <p><strong>Municipio:</strong> <span id="popupPlantaMunicipio"></span></p>
+    <p><strong>Nombre científico:</strong> <span id="popupPlantaCientifico"></span></p>
+    <p><strong>Tóxica:</strong> <span id="popupPlantaToxica"></span></p>
+    <p><strong>Usos:</strong> <span id="popupPlantaUsos"></span></p>
+    <p><strong>Fauna asociada:</strong> <span id="popupPlantaFauna"></span></p>
+    <p><strong>Ecosistema:</strong> <span id="popupPlantaEcosistema"></span></p>
+    <p><strong>Conservación:</strong> <span id="popupPlantaConservacion"></span></p>
+    <p><strong>Dato curioso:</strong> <span id="popupPlantaCuriosidad"></span></p>
+  </div>
+</div>
+
 <body>
   <div class="outer-frame">
     <div class="container">
@@ -170,6 +210,7 @@
         <button onclick="filtrarPorMunicipio('todos')">Mostrar todos</button>
       </div>
     </div>
+
 
     <!-- Galería de flores -->
     <div class="galeria-flores" id="galeriaFlores"></div>

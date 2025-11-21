@@ -594,5 +594,151 @@ button:active {
   transform: translateY(-8px);
 }
 
+.popup-error {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 11000;
+}
+
+.popup-error.visible {
+  display: flex;
+}
+
+.popup-error-contenido {
+  background: #fffbe6;
+  color: #333;
+  border: 2px solid #ffb703;
+  max-width: 400px;
+  width: 90%;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.cerrar-popup-error {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  float: right;
+  cursor: pointer;
+  color: #fb8500;
+}
+
+.cerrar-popup-error:hover {
+  color: #d00000;
+}
+
+.btn-ver-info {
+  margin-top: 10px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #4caf50;
+  color: white;
+  font-weight: 600;
+}
+
+.btn-ver-info:hover {
+  filter: brightness(1.05);
+}
+
+
+.popup-planta {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.popup-planta.visible {
+  display: flex;
+}
+
+.popup-planta-contenido {
+  background: #fffbe6;
+  color: #333;
+  border: 2px solid #ffb703;
+  max-width: 400px;
+  width: 90%;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cerrar-popup-planta {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  float: right;
+  cursor: pointer;
+  color: #fb8500;
+}
+
+.cerrar-popup-planta:hover {
+  color: #d00000;
+}
+
+.popup-exito {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 12000;
+}
+
+.popup-exito.visible {
+  display: flex;
+}
+
+.popup-exito-contenido {
+  background: #ffffff;
+  max-width: 400px;
+  width: 90%;
+  padding: 25px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+  animation: aparecerPop .25s ease-out;
+}
+
+@keyframes aparecerPop {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+.cerrar-popup-exito {
+  float: right;
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.btn-continuar {
+  margin-top: 15px;
+  padding: 10px 16px;
+  border: none;
+  background: #4CAF50;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-continuar:hover {
+  filter: brightness(1.05);
+}
+
 
 

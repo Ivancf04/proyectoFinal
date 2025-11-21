@@ -19,9 +19,9 @@ function iniciarVerdaderoFalso() {
 
   let aciertos = 0;
   let preguntas = [];
-
+  const flor = flores[Math.floor(Math.random() * flores.length)];
   for (let i = 0; i < cantidad; i++) {
-    const flor = flores[Math.floor(Math.random() * flores.length)];
+
     const campo = ["toxica", "ecosistema", "usos", "faunaAsociada"][Math.floor(Math.random() * 4)];
 
     const esVerdadera = Math.random() < 0.5;
@@ -49,7 +49,9 @@ function iniciarVerdaderoFalso() {
 
   function mostrarPregunta(index) {
     if (index >= preguntas.length) {
-      alert(`🎉 Nivel completado con ${aciertos} aciertos de ${cantidad}`);
+      mostrarPopupExito({
+            mensaje: `🎉 Nivel completado con ${aciertos} aciertos de ${cantidad}`
+          });
       
       if (nivelActual < 3) {
         subirNivelJuego(nombreJuego);
@@ -82,10 +84,16 @@ function iniciarVerdaderoFalso() {
     btnV.onclick = () => {
       if (p.correcta) {
         reproducirSonido("win");
+        mostrarPopupExito({
+            mensaje: "¡Es correcto!"
+          });
         aciertos++;
       } else {
         reproducirSonido("lose");
-        alert("❌ Incorrecto");
+        mostrarErrorJuego({
+          flor: flor,
+          mensajeExtra: "Oops"
+        });
       }
       mostrarPregunta(index + 1);
     };
@@ -95,10 +103,16 @@ function iniciarVerdaderoFalso() {
     btnF.onclick = () => {
       if (!p.correcta) {
         reproducirSonido("win");
+        mostrarPopupExito({
+            mensaje: "¡Es correcto!"
+          });
         aciertos++;
       } else {
         reproducirSonido("lose");
-        alert("❌ Incorrecto");
+        mostrarErrorJuego({
+          flor: flor,
+          mensajeExtra: "Oops"
+        });
       }
       mostrarPregunta(index + 1);
     };

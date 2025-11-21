@@ -69,11 +69,17 @@ function crearMemorama() {
         if (c1.dataset.nombre === c2.dataset.nombre) {
           encontrados++;
           seleccionadas = [];
+          mostrarPopupExito({
+            mensaje: "¡Encontraste una pareja!"
+          });
 
           if (encontrados === pares) {
             setTimeout(() => {
               reproducirSonido("win");
-              alert("🎉 ¡Nivel completado!");
+              mostrarPopupExito({
+                mensaje: "🎉 ¡Muy bien! Has completado el nivel."
+              });
+
 
               if (nivelActual < 3) {
                 subirNivelJuego(nombreJuego);
@@ -90,6 +96,15 @@ function crearMemorama() {
             }, 500);
           }
         } else {
+
+          // Obtener info de una de las plantas que volteó
+          const indiceFlor = parseInt(c1.dataset.nombre.replace('flor', ''), 10) - 1;
+          const flor = flores[indiceFlor];
+
+          mostrarErrorJuego({
+            flor,
+            mensajeExtra: "Mira bien la posición de cada carta e intenta recordarla. 🧠"
+          });
           if (intentosRestantes !== null) {
             intentosRestantes--;
             actualizarIntentosEnPantalla();
