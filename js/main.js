@@ -468,6 +468,10 @@ function mostrarPopupExito(opciones = {}) {
   document.getElementById("popupExitoMensaje").textContent = textoFinal;
 
   document.getElementById("popupExito").classList.add("visible");
+
+  requestAnimationFrame(() => {
+    lanzarConfeti();
+  });
 }
 
 function cerrarPopupExito() {

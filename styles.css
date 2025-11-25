@@ -756,3 +756,9 @@ button:active {
   justify-content: space-between;
   align-items: center;
 }
+
+.popup-exito-contenido {
+  position: relative;          
+  overflow: hidden;           
+}
+
